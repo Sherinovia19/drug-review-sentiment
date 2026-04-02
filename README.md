@@ -1,132 +1,157 @@
-# MediSentinel - Drug Review Sentiment Analysis
+# MediSentinel — Drug Review Sentiment Analyzer
 
-MediSentinel is a Machine Learning project that analyzes patient drug reviews and predicts sentiment (Positive/Negative) based on textual feedback.
+Live Application:  
+https://medisentinel-jwu2wvb8amhbbkve6d4tpq.streamlit.app/
 
 ---
 
 ## Overview
 
-MediSentinel uses Natural Language Processing (NLP) techniques to classify drug reviews into sentiments. It helps in understanding patient experiences and can be useful for healthcare analytics and decision-making.
+MediSentinel is a machine learning-based web application that analyzes patient drug reviews and classifies them into sentiment categories:
+
+- Positive  
+- Negative  
+- Uncertain (based on confidence threshold)
+
+The system uses Natural Language Processing (NLP) techniques and a supervised learning model to interpret user-generated medical reviews.
 
 ---
 
 ## Features
 
-* Text preprocessing and cleaning
-* TF-IDF vectorization
-* Trained Machine Learning model for sentiment prediction
-* Simple and reusable Python-based implementation
-* Supports custom user input for real-time predictions
+### Single Review Analysis
+- Input a patient review manually  
+- Get instant sentiment prediction  
+- View confidence score and probability distribution  
+
+### Batch Analysis
+- Upload a CSV file containing multiple reviews  
+- Perform sentiment analysis on large datasets  
+- Download prediction results  
+
+### EDA Insights
+- Visualize rating distribution  
+- View dataset statistics  
+- Analyze top conditions by review count  
+
+### Advanced Controls
+- Adjustable confidence threshold  
+- Option to view preprocessed tokens  
+- Option to display raw prediction probabilities  
 
 ---
 
-## Project Structure
+## Machine Learning Pipeline
 
-```id="3l9xkd"
-drug-review-sentiment/
-│
-├── app.py                  
-├── resume_project.py       
-├── model.pkl              
-├── vectorizer.pkl         
-├── sentiment_model.pkl    
-├── sample_reviews.xlsx    
-├── requirements.txt       
-├── README.md              
-└── .gitignore
-```
+Input Text  
+↓  
+Text Preprocessing  
+↓  
+TF-IDF Vectorization (1–2 grams, max 30,000 features)  
+↓  
+Logistic Regression Model  
+↓  
+Probability Output  
+↓  
+Threshold Filtering  
+↓  
+Final Sentiment Classification  
+
+---
+
+## Model Details
+
+Component        | Description  
+-----------------|------------  
+Algorithm        | Logistic Regression  
+Vectorizer       | TF-IDF (Unigrams and Bigrams)  
+Max Features     | 30,000  
+Accuracy         | Approximately 85%  
+Label Rule       | Rating ≥ 7 → Positive, ≤ 4 → Negative  
+Dataset          | UCI Drug Review Dataset  
 
 ---
 
 ## Dataset
 
-The dataset used for training is sourced from Kaggle and is not included in this repository due to size constraints.
-
-Dataset Source: https://www.kaggle.com/datasets/jessicali9530/kuc-hackathon-winter-2018
-
-Instructions:
-1. Visit the dataset link above
-2. Download the dataset files
-3. Extract and place the required file (e.g., drugsComTest_raw.xlsx) in the project root directory
----
-
-## Installation
-
-1. Clone the repository:
-
-```id="7e7ld7"
-git clone https://github.com/sherinovia19/drug-review-sentiment.git
-cd drug-review-sentiment
-```
-
-2. Install dependencies:
-
-```id="d9m38s"
-pip install -r requirements.txt
-```
+- Source: UCI Machine Learning Repository  
+- Contains patient reviews, ratings, drug names, and conditions  
+- Key columns used:
+  - review  
+  - rating  
+  - drugName  
+  - condition  
 
 ---
 
-## Usage
+## Text Preprocessing
 
-Run the application:
+The following preprocessing steps are applied:
 
-```id="r2v8o9"
-python app.py
-```
-
-Then input a drug review and get the predicted sentiment.
-
----
-
-## Example
-
-Input:
-
-```id="u6e5n0"
-"This medicine worked great and had no side effects."
-```
-
-Output:
-
-```id="f9c2qm"
-Positive
-```
+1. Convert text to lowercase  
+2. Remove URLs  
+3. Remove special characters  
+4. Normalize whitespace  
+5. Remove stopwords  
 
 ---
 
-## Tech Stack
+## Technology Stack
 
-* Python
-* Scikit-learn
-* Pandas
-* NumPy
-* NLP (TF-IDF)
+- Frontend: Streamlit  
+- Backend: Python  
+- Machine Learning: scikit-learn  
+- Data Processing: Pandas, NumPy  
+- Visualization: Streamlit built-in charts  
+
+---
+
+## Project Structure
+
+drug-review-sentiment/  
+│── app.py  
+│── requirements.txt  
+│── model.pkl  
+│── vectorizer.pkl  
+│── README.md  
+
+---
+
+## Run Locally
+
+git clone https://github.com/sherinovia19/drug-review-sentiment.git  
+cd drug-review-sentiment  
+pip install -r requirements.txt  
+streamlit run app.py  
+
+---
+
+## Deployment
+
+This application is deployed using Streamlit Cloud:
+
+https://medisentinel-jwu2wvb8amhbbkve6d4tpq.streamlit.app/
 
 ---
 
 ## Future Improvements
 
-* Deploy as a web app (Streamlit/Flask)
-* Add multi-class sentiment (neutral, mixed)
-* Integrate deep learning models (LSTM/BERT)
-* Build a healthcare dashboard
+- Integration of deep learning models such as LSTM or BERT  
+- Drug recommendation system based on sentiment  
+- API deployment for external integration  
+- Advanced analytics dashboard  
 
 ---
 
 ## Author
 
-Sherinovia
-GitHub: https://github.com/sherinovia19
+Sherin Ovia  
+https://github.com/sherinovia19  
 
 ---
 
-## Contributing
+## Acknowledgements
 
-Feel free to fork this repository and submit pull requests.
-
----
-
-## License
-
-This project is licensed under the MIT License.
+- UCI Machine Learning Repository  
+- Streamlit  
+- scikit-learn  
