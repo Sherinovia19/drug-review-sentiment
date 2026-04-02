@@ -1,4 +1,4 @@
-# MediSentinel — Drug Review Sentiment Analyzer
+# MediSentinel - Drug Review Sentiment Analyzer
 
 Live Application:  
 https://medisentinel-jwu2wvb8amhbbkve6d4tpq.streamlit.app/
